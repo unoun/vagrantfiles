@@ -2,19 +2,15 @@
 
 set -e
 
-# minimize
-
-systemctl mask getty-static.service
-
 # install docker
 
-cat >/etc/apt/sources.list.d/unstable.list <<_EOF
-deb http://http.us.debian.org/debian unstable main
+cat >/etc/apt/sources.list.d/testing.list <<_EOF
+deb http://http.us.debian.org/debian testing main
 _EOF
 
-cat >/etc/apt/preferences.d/unstable <<_EOF
+cat >/etc/apt/preferences.d/testing <<_EOF
 Package: *
-Pin: release a=unstable
+Pin: release a=testing
 Pin-Priority: 90
 _EOF
 
