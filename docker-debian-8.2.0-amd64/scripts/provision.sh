@@ -15,6 +15,7 @@ Pin-Priority: 90
 _EOF
 
 apt-get update
+apt-get -y install -t testing lvm2
 apt-get -y install docker.io
 
 #
