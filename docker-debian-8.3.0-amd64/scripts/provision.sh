@@ -18,6 +18,10 @@ apt-get update
 apt-get -y install -t testing lvm2
 apt-get -y install docker.io
 
+grep -q 'cgroup_enable=memory swapaccount=1' /etc/default/grub \
+|| sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT="\)/\1cgroup_enable=memory swapaccount=1 /' /etc/default/grub
+/usr/sbin/update-grub
+
 #
 
 apt-get -y install debootstrap
