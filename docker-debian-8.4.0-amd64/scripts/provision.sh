@@ -15,10 +15,11 @@ Pin-Priority: 90
 _EOF
 
 apt-get update
-apt-get -y install -t testing lvm2 linux-image-4.3.0-1-amd64 linux-headers-4.3.0-1-amd64
+export DEBIAN_FRONTEND=noninteractive
+apt-get -y install -t testing lvm2 linux-image-4.4.0-1-amd64 linux-headers-4.4.0-1-amd64 debconf
 apt-get -y install docker.io
 
-dkms autoinstall -k 4.3.0-1-amd64
+dkms autoinstall -k 4.4.0-1-amd64
 
 grep -q '^DOCKER_OPTS=' /etc/default/docker \
 || sed -i '/DOCKER_OPTS=/aDOCKER_OPTS="--storage-driver=overlay"' /etc/default/docker

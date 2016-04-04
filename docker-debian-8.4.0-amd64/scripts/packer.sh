@@ -4,7 +4,7 @@ set -e
 
 # install packer
 
-packer_version="0.8.6"
+packer_version="0.10.0"
 
 apt-get install unzip
 
@@ -17,7 +17,7 @@ if [ -f /tmp/packer_${packer_version}_linux_amd64.zip ]; then
 else
   sum=""
 fi
-if [ "$sum" != "2f1ca794e51de831ace30792ab0886aca516bf6b407f6027e816ba7ca79703b5" ]; then
+if [ "$sum" != "eadd33bc0f8fa42034059fc1cda5f43ed6f540746e767480f0706ebed49b45e5" ]; then
   wget --quiet https://releases.hashicorp.com/packer/${packer_version}/packer_${packer_version}_linux_amd64.zip
 fi
 cd /usr/local/packer && unzip /tmp/packer_${packer_version}_linux_amd64.zip
