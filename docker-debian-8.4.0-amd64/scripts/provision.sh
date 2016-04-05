@@ -2,7 +2,7 @@
 
 set -e
 
-# install docker
+#
 
 cat >/etc/apt/sources.list.d/testing.list <<_EOF
 deb http://http.us.debian.org/debian testing main
@@ -17,12 +17,8 @@ _EOF
 apt-get update
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y install -t testing lvm2 linux-image-4.4.0-1-amd64 linux-headers-4.4.0-1-amd64 debconf
-apt-get -y install docker.io
 
 dkms autoinstall -k 4.4.0-1-amd64
-
-grep -q '^DOCKER_OPTS=' /etc/default/docker \
-|| sed -i '/DOCKER_OPTS=/aDOCKER_OPTS="--storage-driver=overlay"' /etc/default/docker
 
 grep -q 'cgroup_enable=memory swapaccount=1' /etc/default/grub \
 || sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT="\)/\1cgroup_enable=memory swapaccount=1 /' /etc/default/grub
