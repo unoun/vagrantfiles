@@ -16,9 +16,12 @@ _EOF
 
 apt-get update
 export DEBIAN_FRONTEND=noninteractive
-apt-get -y install -t testing lvm2 linux-image-4.4.0-1-amd64 linux-headers-4.4.0-1-amd64 debconf
 
-dkms autoinstall -k 4.4.0-1-amd64
+kernel_version="4.5.0-2-amd64"
+
+apt-get -y install -t testing lvm2 linux-image-${kernel_version} linux-headers-${kernel_version} debconf systemd
+
+dkms autoinstall -k ${kernel_version}
 
 grep -q 'cgroup_enable=memory swapaccount=1' /etc/default/grub \
 || sed -i 's/\(GRUB_CMDLINE_LINUX_DEFAULT="\)/\1cgroup_enable=memory swapaccount=1 /' /etc/default/grub
