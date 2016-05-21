@@ -11,4 +11,24 @@ docker-debian-8.4.0-amd64
     vagrant reload
     vagrant ssh -c "cd /vagrant && sudo bash scripts/mkdockerimage.sh"
     vagrant ssh -c "sudo docker import - local/debian-8.4.0-amd64 </vagrant/debian-8.4.0-amd64.tar.gz"
-    vagrant ssh -c "sudo docker build -t local/mysql-debian-8 /vagrant/dockerfiles/mysql-debian-8"
+
+work on container
+-----------------
+
+### create
+
+    sudo docker tag local/debian-8.4.0-amd64 local/work
+    sudo docker create --name work -i -t local/work /bin/bash
+
+### start
+
+    sudo docker start -a -i work
+
+### backup
+
+    sudo docker export work | gzip >/vagrant/work.tar.gz
+
+### restore
+
+    zcat work.tar.gz | sudo docker import - local/work
+    sudo docker create --name work -i -t local/work /bin/bash
