@@ -1,0 +1,9 @@
+- hosts: work
+  connection: docker
+  tasks:
+  - name: install
+    apt: name={{ item }}
+    with_items:
+    - netbase
+    - whois
+    - git

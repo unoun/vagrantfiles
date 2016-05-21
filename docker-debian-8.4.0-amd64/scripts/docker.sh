@@ -24,3 +24,7 @@ _EOF
 #
 
 apt-get -y install docker-engine
+
+#
+
+gpasswd -a vagrant docker
