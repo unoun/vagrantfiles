@@ -1,9 +1,18 @@
 - hosts: work
   connection: docker
   tasks:
-  - name: install
-    apt: name={{ item }}
-    with_items:
-    - netbase
-    - whois
-    - git
+    - apt: name={{ item }}
+      with_items:
+        - locales
+    - debconf: name=locales question='locales/locales_to_be_generated' value='ja_JP.UTF-8 UTF-8' vtype='multiselect'
+      notify: locale-gen
+    - apt: name={{ item }}
+      with_items:
+        - netbase
+        - whois
+        - git
+        - vim
+        - man-db
+  handlers:
+    - name: locale-gen
+      script: /var/lib/dpkg/info/locales.postinst configure
