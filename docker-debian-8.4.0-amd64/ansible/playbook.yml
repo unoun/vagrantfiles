@@ -13,6 +13,12 @@
         - git
         - vim
         - man-db
+    - get_url: url=https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
+        dest=/tmp/go1.6.2.linux-amd64.tar.gz
+        checksum=sha256:e40c36ae71756198478624ed1bb4ce17597b3c19d243f3f0899bb5740d56212a
+      register: golang
+    - unarchive: src=/tmp/go1.6.2.linux-amd64.tar.gz dest=/usr/local copy=no
+      when: golang.changed
   handlers:
     - name: locale-gen
       script: /var/lib/dpkg/info/locales.postinst configure
