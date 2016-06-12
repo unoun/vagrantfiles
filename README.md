@@ -1,19 +1,19 @@
 vagrantfiles
 ============
 
-docker-debian-8.4.0-amd64
+docker-debian-8.5.0-amd64
 -------------------------
 
 ### create
 
-    cd docker-debian-8.4.0-amd64
+    cd docker-debian-8.5.0-amd64
     vagrant up --provision-with provision
     vagrant reload --provision-with docker,packer
     vagrant reload --provision-with cleanup
     vagrant reload
     vagrant ssh -c "cd /vagrant && sudo bash scripts/mkdockerimage.sh"
-    vagrant ssh -c "docker import - local/debian-8.4.0-amd64:base </vagrant/debian-8.4.0-amd64.tar.gz"
-    vagrant ssh -c "docker build -t local/debian-8.4.0-amd64 /vagrant/dockerfiles/debian-8.4.0-amd64"
+    vagrant ssh -c "docker import - local/debian-8.5.0-amd64:base </vagrant/debian-8.5.0-amd64.tar.gz"
+    vagrant ssh -c "docker build -t local/debian-8.5.0-amd64 /vagrant/dockerfiles/debian-8.5.0-amd64"
 
 ### provision
 
@@ -24,7 +24,7 @@ work on container
 
 ### create
 
-    docker tag local/debian-8.4.0-amd64 local/work
+    docker tag local/debian-8.5.0-amd64 local/work
     docker create --name work -i -t local/work /bin/bash
 
 ### provision
