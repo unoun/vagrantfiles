@@ -17,7 +17,7 @@ _EOF
 apt-get update
 export DEBIAN_FRONTEND=noninteractive
 
-kernel_version="4.5.0-2-amd64"
+kernel_version="4.7.0-1-amd64"
 
 apt-get -y install -t testing lvm2 linux-image-${kernel_version} linux-headers-${kernel_version} debconf systemd \
   ansible
