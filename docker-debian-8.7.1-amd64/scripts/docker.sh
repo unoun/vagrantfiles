@@ -14,13 +14,6 @@ apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E8
 
 apt-get update
 
-test -d /etc/systemd/system/docker.service.d || mkdir /etc/systemd/system/docker.service.d
-cat >/etc/systemd/system/docker.service.d/override.conf <<_EOF
-[Service]
-ExecStart=
-ExecStart=/usr/bin/docker daemon -H fd:// --storage-driver=overlay
-_EOF
-
 #
 
 apt-get -y install docker-engine
