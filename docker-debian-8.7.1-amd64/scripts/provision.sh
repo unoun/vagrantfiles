@@ -10,5 +10,4 @@ grep -q 'cgroup_enable=memory swapaccount=1' /etc/default/grub \
 
 #
 
-apt-get -y install ansible
 apt-get -y install debootstrap

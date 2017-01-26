@@ -122,5 +122,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "provision", type: "shell", path: "scripts/provision.sh"
   config.vm.provision :reload
   config.vm.provision "docker", type: "shell", path: "scripts/docker.sh"
+  config.vm.provision "ansible", type: "shell", path: "scripts/ansible.sh"
   config.vm.provision "packer", type: "shell", path: "scripts/packer.sh"
 end
