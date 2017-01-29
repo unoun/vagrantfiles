@@ -29,12 +29,13 @@ work on container
 
     docker start work
     cd /vagrant/ansible
-    ansible -i hosts work -m ping
-    ansible-playbook -i hosts playbook.yml -v
+    ansible work -i hosts -m ping
+    ansible-playbook playbook.yml -i hosts -vvv -C -D
+    ansible-playbook playbook.yml -i hosts -vvv
 
-### start
+### exec
 
-    docker start -a -i work
+    docker exec -i -t work /bin/bash
 
 ### backup
 
