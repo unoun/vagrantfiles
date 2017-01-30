@@ -30,8 +30,8 @@ work on container
     docker start work
     cd /vagrant/ansible
     ansible work -i hosts -m ping
-    ansible-playbook playbook.yml -i hosts -vvv -C -D
-    ansible-playbook playbook.yml -i hosts -vvv
+    ansible-playbook playbook/work.yml -i hosts -vvv -C -D
+    ansible-playbook playbook/work.yml -i hosts -vvv
 
 ### exec
 
