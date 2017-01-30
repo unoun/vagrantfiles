@@ -17,6 +17,12 @@ docker-debian-8.7.1-amd64
 
     vagrant provision
 
+or
+
+    cd /vagrant/ansible
+    ansible localhost -i hosts -m ping
+    ansible-playbook playbook/localhost.yml -i hosts -vvv
+
 work on container
 -----------------
 
