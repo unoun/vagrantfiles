@@ -22,8 +22,11 @@ work on container
 
 ### create
 
+    docker volume create work-volume
+    docker network create --gateway "10.128.0.1" --subnet "10.128.0.0/16" --ip-range "10.128.0.0/16" work-network
+
     docker tag local/debian-8.7.1-amd64 local/work
-    docker create --name work -i -t local/work /bin/bash
+    docker create --name work --ip "10.128.0.2" --network "work-network" -v work-volume:/data -i -t local/work /bin/bash
 
 ### provision
 
@@ -39,9 +42,8 @@ work on container
 
 ### backup
 
-    docker export work | gzip >/vagrant/work.tar.gz
+    docker exec work tar cvpzf - -C / data >/vagrant/work-volume.tar.gz
 
 ### restore
 
-    zcat work.tar.gz | docker import - local/work
-    docker create --name work -i -t local/work /bin/bash
+    docker exec -i work tar xvpzf - -C / </vagrant/work-volume.tar.gz
