@@ -34,6 +34,11 @@ work on container
     docker tag local/debian-8.7.1-amd64 local/work
     docker create --name work --ip "10.128.0.2" --network "work-network" -v work-volume:/data -i -t local/work /bin/bash
 
+### network
+
+    docker network disconnect work-network work
+    docker network connect --ip "10.128.255.254" work-network work
+
 ### provision
 
     docker start work
