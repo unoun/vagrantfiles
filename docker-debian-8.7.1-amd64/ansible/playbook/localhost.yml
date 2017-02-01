@@ -4,3 +4,6 @@
   tasks:
     - name: install screen
       apt: name=screen
+
+    - name: install ipcalc
+      apt: name=ipcalc
