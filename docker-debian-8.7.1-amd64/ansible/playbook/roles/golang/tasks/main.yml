@@ -1,0 +1,24 @@
+- name: download golang
+  get_url:
+    url: 'https://storage.googleapis.com/golang/go{{ golang_version }}.linux-amd64.tar.gz'
+    dest: '/tmp/go{{ golang_version }}.linux-amd64.tar.gz'
+    checksum: '{{ golang_checksum }}'
+  register: golang_tarball
+
+- name: rmdir golang
+  file:
+    path: '{{ golang_install_prefix }}/go'
+    state: absent
+  when: golang_tarball.changed
+
+- name: stat golang dir
+  stat:
+    path: '{{ golang_install_prefix }}/go'
+  register: golang_dir
+
+- name: unarchive golang
+  unarchive:
+    src: '/tmp/go{{ golang_version }}.linux-amd64.tar.gz'
+    dest: '{{ golang_install_prefix }}'
+    copy: no
+  when: golang_dir.stat.exists == False

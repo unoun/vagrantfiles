@@ -1,21 +1,32 @@
 - hosts: work
   connection: docker
 
+  roles:
+    - golang
+
   tasks:
     - name: install less
-      apt: name=less
+      apt:
+        name: less
 
     - name: install vim
-      apt: name=vim
+      apt:
+        name: vim
 
     - name: install man
-      apt: name=man-db
+      apt:
+        name: man-db
 
     - name: install locales
-      apt: name=locales
+      apt:
+        name: locales
 
     - name: debconf locales
-      debconf: name=locales question='locales/locales_to_be_generated' value='ja_JP.UTF-8 UTF-8' vtype='multiselect'
+      debconf:
+        name: locales
+        question: 'locales/locales_to_be_generated'
+        value: 'ja_JP.UTF-8 UTF-8'
+        vtype: 'multiselect'
 
     - name: generate locales
       lineinfile:
@@ -26,23 +37,20 @@
       notify: locale-gen
 
     - name: install netbase
-      apt: name=netbase
+      apt:
+        name: netbase
 
     - name: install whois
-      apt: name=whois
+      apt:
+        name: whois
 
     - name: install git
-      apt: name=git
+      apt:
+        name: git
 
     - name: install iproute2
-      apt: name=iproute2
-
-    - get_url: url=https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
-        dest=/tmp/go1.6.2.linux-amd64.tar.gz
-        checksum=sha256:e40c36ae71756198478624ed1bb4ce17597b3c19d243f3f0899bb5740d56212a
-      register: golang
-    - unarchive: src=/tmp/go1.6.2.linux-amd64.tar.gz dest=/usr/local copy=no
-      when: golang.changed
+      apt:
+        name: iproute2
 
   handlers:
     - name: locale-gen
