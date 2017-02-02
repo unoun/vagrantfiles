@@ -1,6 +1,9 @@
 - hosts: localhost
   connection: local
 
+  roles:
+    - docker-compose
+
   tasks:
     - name: install screen
       apt: name=screen
