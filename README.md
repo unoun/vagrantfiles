@@ -26,12 +26,20 @@ or
 work on container
 -----------------
 
-### create
+### prepare
 
     docker volume create work-volume
     docker network create --gateway "10.128.0.1" --subnet "10.128.0.0/16" --ip-range "10.128.0.0/16" work-network
 
     docker tag local/debian-8.7.1-amd64 local/work
+
+### create
+
+    cd /vagrant
+    docker-compose create
+
+or
+
     docker create --name work --ip "10.128.0.2" --network "work-network" -v work-volume:/data -i -t local/work /bin/bash
 
 ### network
@@ -39,9 +47,16 @@ work on container
     docker network disconnect work-network work
     docker network connect --ip "10.128.255.254" work-network work
 
-### provision
+### start
+
+    docker-compose up -d
+
+or
 
     docker start work
+
+### provision
+
     cd /vagrant/ansible
     ansible work -i hosts -m ping
     ansible-playbook playbook/work.yml -i hosts -vvv -C -D

@@ -1,0 +1,22 @@
+version: "3"
+
+volumes:
+  work-volume:
+    external: true
+
+networks:
+  work-network:
+    external: true
+
+services:
+  work:
+    image: local/work
+    volumes:
+      - work-volume:/data
+    networks:
+      work-network:
+        ipv4_address: 10.128.0.2
+    command: /bin/bash
+    container_name: work
+    stdin_open: true
+    tty: true
