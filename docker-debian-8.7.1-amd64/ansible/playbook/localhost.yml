@@ -10,3 +10,6 @@
 
     - name: install ipcalc
       apt: name=ipcalc
+
+    - name: install dnsutils
+      apt: name=dnsutils
