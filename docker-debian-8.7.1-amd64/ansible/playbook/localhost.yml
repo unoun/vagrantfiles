@@ -13,3 +13,9 @@
 
     - name: install dnsutils
       apt: name=dnsutils
+
+    - name: install curl
+      apt: name=curl
+
+    - name: install bc
+      apt: name=bc
