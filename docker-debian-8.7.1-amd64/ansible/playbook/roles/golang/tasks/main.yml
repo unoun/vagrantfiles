@@ -1,3 +1,7 @@
+- name: install ca-certificates
+  apt:
+    name: ca-certificates
+
 - name: download golang
   get_url:
     url: 'https://storage.googleapis.com/golang/go{{ golang_version }}.linux-amd64.tar.gz'
