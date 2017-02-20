@@ -35,7 +35,7 @@ work on container
 
 ### create
 
-    cd /vagrant
+    cd /vagrant/docker-compose-files/work
     docker-compose create
 
 or
@@ -49,6 +49,7 @@ or
 
 ### start
 
+    cd /vagrant/docker-compose-files/work
     docker-compose up -d
 
 or
