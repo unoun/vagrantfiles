@@ -62,6 +62,7 @@ or
     ansible work -i hosts -m ping
     ansible-playbook playbook/work.yml -i hosts -vvv -C -D
     ansible-playbook playbook/work.yml -i hosts -vvv
+    docker commit work local/work
 
 ### exec
 
