@@ -1,0 +1,33 @@
+version: "3"
+
+volumes:
+  postgres-data:
+  redmine-files:
+
+services:
+
+  postgres:
+    image: postgres:latest
+    # expose 5432 by default
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: redmine
+      # PGDATA: /var/lib/postgresql/data by default
+      # POSTGRES_DB: $POSTGRES_USER=redmine by default
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redmine:
+    image: redmine:latest
+    # expose 3000 by default
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      REDMINE_DB_POSTGRES: postgres
+      # REDMINE_DB_PORT: 5432 by default
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: secret
+    volumes:
+      - redmine-files:/usr/src/redmine/files
