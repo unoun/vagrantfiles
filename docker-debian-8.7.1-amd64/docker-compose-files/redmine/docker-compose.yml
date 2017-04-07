@@ -18,7 +18,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
 
   redmine:
-    image: redmine:latest
+    build: .
     # expose 3000 by default
     ports:
       - "3000:3000"

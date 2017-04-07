@@ -1,0 +1,10 @@
+--- /docker-entrypoint.sh.ORIG	2017-02-24 01:28:47.000000000 +0000
++++ /docker-entrypoint.sh	2017-04-05 04:55:41.944010000 +0000
+@@ -105,6 +105,7 @@
+ 		fi
+ 		if [ "$1" != 'rake' -a -z "$REDMINE_NO_DB_MIGRATE" ]; then
+ 			gosu redmine rake db:migrate
++			gosu redmine rake redmine:plugins:migrate
+ 		fi
+ 		
+ 		# https://www.redmine.org/projects/redmine/wiki/RedmineInstall#Step-8-File-system-permissions
