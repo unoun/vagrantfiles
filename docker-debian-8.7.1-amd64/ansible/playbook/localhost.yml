@@ -2,6 +2,7 @@
   connection: local
 
   roles:
+    - packer
     - docker-compose
 
   tasks:
