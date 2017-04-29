@@ -1,14 +1,33 @@
 version: "3"
 
 volumes:
+  postgres-data:
   gitbucket-home:
 
 services:
+
+  postgres:
+    image: postgres:latest
+    # expose 5432 by default
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: gitbucket
+      # PGDATA: /var/lib/postgresql/data by default
+      # POSTGRES_DB: $POSTGRES_USER=gitbucket by default
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
   gitbucket:
     build: .
     # expose 8080 by default
     ports:
       - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      # jdbc:postgresql://<servername>/<dbname>
+      GITBUCKET_DB_URL: "jdbc:postgresql://postgres/gitbucket"
+      GITBUCKET_DB_USERNAME: gitbucket
+      GITBUCKET_DB_PASSWORD: secret
     volumes:
       - gitbucket-home:/root/.gitbucket

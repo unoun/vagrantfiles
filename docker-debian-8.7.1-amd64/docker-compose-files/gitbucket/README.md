@@ -9,6 +9,11 @@ start
     # visit http://localhost:8080/
     # default user/pass is root/root
 
+postgres
+--------
+
+    docker-compose exec --user postgres postgres /bin/bash
+
 gitbucket
 ---------
 
