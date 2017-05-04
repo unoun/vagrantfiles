@@ -11,5 +11,5 @@ start
 -----
 
     docker-compose up -d
-    # visit http://localhost:8080/
+    # visit http://localhost:8280/
     # and setup

@@ -22,7 +22,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "forwarded_port", guest: 3000, host: 3000 # redmine
-  config.vm.network "forwarded_port", guest: 8080, host: 8080 # jenkins, gitbucket, redash
+  config.vm.network "forwarded_port", guest: 8080, host: 8080 # gitbucket
+  config.vm.network "forwarded_port", guest: 8180, host: 8180 # jenkins
+  config.vm.network "forwarded_port", guest: 8280, host: 8280 # redash
   config.vm.network "forwarded_port", guest: 8888, host: 8888 # jupyter
 
   # Create a private network, which allows host-only access to the machine

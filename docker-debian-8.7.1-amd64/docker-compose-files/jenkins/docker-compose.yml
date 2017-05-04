@@ -8,6 +8,6 @@ services:
   jenkins:
     image: jenkins:latest
     ports:
-      - "8080:8080"
+      - "8180:8080"
     volumes:
       - jenkins-home:/var/jenkins_home
