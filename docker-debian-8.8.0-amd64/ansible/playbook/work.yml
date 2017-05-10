@@ -52,6 +52,14 @@
       apt:
         name: iproute2
 
+    - name: install iputils-ping
+      apt:
+        name: iputils-ping
+
+    - name: install netcat
+      apt:
+        name: netcat
+
   handlers:
     - name: locale-gen
       shell: /usr/sbin/locale-gen
