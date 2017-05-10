@@ -10,4 +10,4 @@ fi
 rootdir=$(mktemp -d)
 debootstrap --variant=minbase jessie $rootdir
 chroot $rootdir apt-get clean
-tar -C $rootdir -cpzf debian-8.7.1-amd64.tar.gz .
+tar -C $rootdir -cpzf debian-8.8.0-amd64.tar.gz .

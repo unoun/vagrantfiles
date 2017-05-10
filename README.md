@@ -1,17 +1,17 @@
 vagrantfiles
 ============
 
-docker-debian-8.7.1-amd64
+docker-debian-8.8.0-amd64
 -------------------------
 
 ### create
 
-    cd docker-debian-8.7.1-amd64
+    cd docker-debian-8.8.0-amd64
     vagrant plugin install vagrant-reload
     vagrant up
     vagrant ssh -c "cd /vagrant && sudo bash scripts/mkdockerimage.sh"
-    vagrant ssh -c "docker import - local/debian-8.7.1-amd64:base </vagrant/debian-8.7.1-amd64.tar.gz"
-    vagrant ssh -c "docker build -t local/debian-8.7.1-amd64 /vagrant/dockerfiles/debian-8.7.1-amd64"
+    vagrant ssh -c "docker import - local/debian-8.8.0-amd64:base </vagrant/debian-8.8.0-amd64.tar.gz"
+    vagrant ssh -c "docker build -t local/debian-8.8.0-amd64 /vagrant/dockerfiles/debian-8.8.0-amd64"
 
 ### provision
 

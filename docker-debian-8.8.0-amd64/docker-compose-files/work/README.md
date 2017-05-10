@@ -7,7 +7,7 @@ prepare
     docker volume create work-volume
     docker network create --gateway "10.128.0.1" --subnet "10.128.0.0/16" --ip-range "10.128.0.0/16" work-network
 
-    docker tag local/debian-8.7.1-amd64 local/work
+    docker tag local/debian-8.8.0-amd64 local/work
 
 create
 ------
