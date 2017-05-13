@@ -13,3 +13,10 @@ start
     docker-compose up -d
     # visit http://localhost:8280/
     # and setup
+
+backup
+------
+
+    docker-compose down
+    docker-compose run -T postgres tar cvpzf - -C / var/lib/postgresql/data >postgres-data.tar.gz
+    docker-compose down

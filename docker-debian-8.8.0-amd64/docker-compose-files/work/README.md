@@ -47,14 +47,26 @@ provision
 exec
 ----
 
+    docker-compose exec work /bin/bash
+
+or
+
     docker exec -i -t work /bin/bash
 
 backup
 ------
 
+    docker-compose run -T work tar cvpzf - -C / data >work-volume.tar.gz
+
+or
+
     docker exec work tar cvpzf - -C / data >/vagrant/work-volume.tar.gz
 
 restore
 -------
+
+    docker-compose run work tar xvpzf - -C / <work-volume.tar.gz
+
+or
 
     docker exec -i work tar xvpzf - -C / </vagrant/work-volume.tar.gz

@@ -11,3 +11,10 @@ jupyter
 -------
 
     docker-compose exec jupyter /bin/bash
+
+backup
+------
+
+    docker-compose down
+    docker-compose run -T jupyter tar cvpzf - -C / home/jovyan/work >jupyter-work.tar.gz
+    docker-compose down
