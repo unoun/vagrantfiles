@@ -18,4 +18,4 @@ db {
 _EOF
 fi
 
-exec java -jar /opt/gitbucket/gitbucket.war
+exec java -jar /opt/gitbucket/gitbucket.war --temp_dir=/opt/gitbucket/tmp

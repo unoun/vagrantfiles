@@ -11,6 +11,8 @@ ADD https://github.com/gitbucket/gitbucket-emoji-plugin/releases/download/4.4.0/
 ADD start.sh /opt/gitbucket/
 RUN chmod 755 /opt/gitbucket/start.sh
 
+RUN mkdir /opt/gitbucket/tmp
+
 EXPOSE 8080
 
 CMD ["/opt/gitbucket/start.sh"]
