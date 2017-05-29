@@ -26,3 +26,11 @@
     dest: '{{ golang_install_prefix }}'
     copy: no
   when: golang_dir.stat.exists == False
+
+- name: add golang path to bash
+  copy:
+    src: etc/profile.d/20golang.sh
+    dest: /etc/profile.d/
+    mode: '0644'
+    owner: root
+    group: root

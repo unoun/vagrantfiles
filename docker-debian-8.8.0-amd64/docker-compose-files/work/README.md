@@ -47,11 +47,11 @@ provision
 exec
 ----
 
-    docker-compose exec work /bin/bash
+    docker-compose exec work /bin/bash -l
 
 or
 
-    docker exec -i -t work /bin/bash
+    docker exec -i -t work /bin/bash -l
 
 backup
 ------
