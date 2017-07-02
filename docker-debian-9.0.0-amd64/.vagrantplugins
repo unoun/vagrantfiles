@@ -1,0 +1,3 @@
+unless Vagrant.has_plugin? 'vagrant-reload'
+  raise "vagrant plugin install vagrant-reload"
+end

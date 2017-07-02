@@ -4,8 +4,12 @@
   roles:
     - packer
     - docker-compose
+    - golang
 
   tasks:
+    - name: install debootstrap
+      apt: name=debootstrap
+
     - name: install screen
       apt: name=screen
 
